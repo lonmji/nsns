@@ -12,3 +12,4 @@ fwa
 fw
 Toi la nhanh p2
 Toi la nhanh p1
+Sua p1
