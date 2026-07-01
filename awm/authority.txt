@@ -1,0 +1,34 @@
+sudo groupadd gr_name
+
+sudo usermod -aG gr_name username
+
+Assign one folder
+
+sudo chgrp projectteam /path/to/folder
+sudo chmod 770 /path/to/folder
+
+Assign may folder
+
+sudo chgrp -R projectteam /path/to/folder1 /path/to/folder2
+sudo chmod -R 770 /path/to/folder1 /path/to/folder2
+
+Create user:
+sudo useradd username
+sudo passwd username
+
+Create root:
+sudo usermod -aG sudo username
+
+Check:
+whoami
+groups
+
+Change ssh port:
+sudo nano /etc/ssh/sshd_config
+Port 2222
+
+sudo systemctl restart ssh
+
+sudo ufw allow 2222/tcpssh
+
+ssh -p 2222 username@server_ip

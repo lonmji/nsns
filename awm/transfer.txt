@@ -1,0 +1,43 @@
+1) Upload and download
+sudo mkdir -p /srv/sftp/shared
+sudo chgrp sftpteam /srv/sftp/shared
+sudo chmod 2770 /srv/sftp/shared
+
+2) Upload only, no download
+sudo mkdir -p /srv/sftp/upload-only
+sudo chgrp sftpteam /srv/sftp/upload-only
+sudo chmod 733 /srv/sftp/upload-only
+
+3) Download only, no upload
+sudo mkdir -p /srv/sftp/download-only
+sudo chgrp sftpteam /srv/sftp/download-only
+sudo chmod 2755 /srv/sftp/download-only
+
+4) Only one folder
+Match User username
+ChrootDirectory /srv/sftp/username
+ForceCommand internal-sftp
+AllowTcpForwarding no
+
+sudo mkdir -p /srv/sftp/username/upload
+sudo chown root:root /srv/sftp/username
+sudo chmod 755 /srv/sftp/username
+sudo chgrp sftpteam /srv/sftp/username/upload
+sudo chmod 2770 /srv/sftp/username/upload
+
+5) Many folders
+sudo mkdir -p /srv/sftp/username/folder1
+sudo mkdir -p /srv/sftp/username/folder2
+sudo chown root:root /srv/sftp/username
+sudo chmod 755 /srv/sftp/username
+sudo chgrp sftpteam /srv/sftp/username/folder1 /srv/sftp/username/folder2
+sudo chmod 2770 /srv/sftp/username/folder1 /srv/sftp/username/folder2
+
+sftp username@server_ip
+
+Upload file: put localfile.txt
+put /home/me/file.txt /srv/sftp/upload-only/
+put -r foldername
+Download file: get remotefile.txt
+get /srv/sftp/download-only/file.txt
+get -r foldername

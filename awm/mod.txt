@@ -1,0 +1,10 @@
+chmod 777 folder
+
+
+r = 4
+w = 2
+x = 1
+
+7: owner
+7: groups
+7: other
